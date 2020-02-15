@@ -16,14 +16,22 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json(force=True)
-    data = [data.get('text')]
+    if data.get('what')=='ised_sector':
+        from predict_ised_sector import predict_sector_ised as pis
+        result = pis(data.get('text'))
+    else:
+        pass
+        from predict_dept import predict_dept
+        result = predict_dept(data.get('text'))
+        #data = [data.get('text')]
+
     # convert data into dataframe
     
 
     # predictions
-    result = {}
-    result['result'] = model.predict(data)[0]
-    result['pct'] = round(model.predict_proba(data).max(),2)
+        #result = {}
+        #result['result'] = model.predict(data)[0]
+        #result['pct'] = round(model.predict_proba(data).max(),2)
 
     # send back to browser
     
