@@ -13,4 +13,4 @@ def predict_sector_ised(text):
        'SRS', 'STS']
     pct = list(np.round(model.predict_proba([text]),2)[0])
     r = dict(zip(y_cols,pct))
-    return r
+    return {'sectors':r}

@@ -19,10 +19,17 @@ def predict():
     if data.get('what')=='ised_sector':
         from predict_ised_sector import predict_sector_ised as pis
         result = pis(data.get('text'))
+        
+
+
     else:
         pass
         from predict_dept import predict_dept
         result = predict_dept(data.get('text'))
+        if result['dept']=='ic' and data.get('what') != 'dept-only':
+            from predict_ised_sector import predict_sector_ised as pis
+            sectors = pis(data.get('text'))['sectors']
+            result['sectors'] = sectors
         #data = [data.get('text')]
 
     # convert data into dataframe
