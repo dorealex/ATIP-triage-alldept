@@ -6,7 +6,7 @@ from sklearn.externals import joblib
 
 # load model
 #model = pickle.load(open('trained_model-[all].pkl','rb'))
-model = joblib.load("full_model2.jl")
+#model = joblib.load("full_model2.jl")
 # app
 app = Flask(__name__)
 
@@ -19,9 +19,11 @@ def predict():
     if data.get('what')=='ised_sector':
         from predict_ised_sector import predict_sector_ised as pis
         result = pis(data.get('text'))
-        
-
-
+        return jsonify(result)
+    elif data.get('what')=='prob_dept':
+        from dept_prob import predict_dept_prob
+        result = predict_dept_prob(data.get('text'))
+        return jsonify(result)
     else:
         pass
         from predict_dept import predict_dept
