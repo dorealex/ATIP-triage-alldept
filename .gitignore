@@ -8,3 +8,4 @@ ised_atip_clean-23-Jan.csv
 *.csv
 test.ipynb
 *.pyc
+__pycache__/dept_prob.cpython-37.pyc
