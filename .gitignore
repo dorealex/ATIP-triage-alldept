@@ -7,3 +7,4 @@ ised_atip_clean-23-Jan.csv
 *.ipynb
 *.csv
 test.ipynb
+*.pyc
