@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import pickle
 from sklearn.svm import LinearSVC
 from sklearn.externals import joblib
@@ -11,8 +11,10 @@ from sklearn.externals import joblib
 app = Flask(__name__)
 
 # routes
-@app.route('/', methods=['POST'])
-
+@app.route('/', methods=['POST','GET'])
+def index():
+    return render_template('index.html')
+@app.route('/request/', methods=['POST'])
 def predict():
     # get data
     data = request.get_json(force=True)
