@@ -1,23 +1,54 @@
+{% extends "nav.html" %}
+{% block content %}
 <div class='container'>
-    <h1>ATIP of the Iceberg AI demo</h1>
-    <form action="">
+    <h2>ATIP Triage Demo</h2>
+    <form method="POST">
+
         <div class='form-group'>
-            <small class="form-text text-muted">Please enter the ATIP request to demo</small>
-            <textarea class='form-control' id='text_val'></textarea>
-            
+            {{ form.hidden_tag() }}
+            {{ form.req_text.label(class_="form-text text-muted") }} {{ form.req_text(class_="form-control") }}
             <br>
-            <small class="form-text text-muted">Select the request type</small>
-            <select class="form-control" id="req_type">
-                <option>Departmental Triage</option>
-                <option>ISED Sector Triage</option>
-                <option>Departmental Triage with probabilities</option>
-            </select>
-              
-              <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form.req_type.label(class_="form-text text-muted") }} {{ form.req_type(class_="form-control") }}
+            <br>
+            {{ form.submit(class_="btn btn-primary") }}
+
+        </div>
+        <div class="output_nice">
+
         </div>
     </form>
     <div>
-        <h4>Output</h4>
+        <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Raw Input/Output
+        </button>
+        <div class="collapse.show" id="collapseExample">
+            <div class="card card-body">
+                {% if output %}
+                Your raw input:
+                {{ output[0] }}
+                <br>
+                Raw output:
+                {{ output[1] }}
+                {% endif %}
+            </div>
+          </div>
+
+    </div>
+    <hr>
+    <h3>More information</h3>
+    <div>
+        <h4>Triage: How to send requests:</h4>
+        <p>Users can send requests to the API from anywhere. Send POST requests to <a href="https://atip-triage-alldept.herokuapp.com/request/">https://atip-triage-alldept.herokuapp.com/request/</a>.<br>
+        The response will be in the form: <strong>{'dept': 'result','pct': 0.XX}</strong> where result is the abbreviation and pct is the percentage. The request format is as follows: <strong>{'text':'insert request text here'}</strong> <br>
+        The user can also specify what they want by adding:
+        <ul>
+            <li>'what':'dept-only' will respond only with the top department and the percentage. Will not chain(see below) </li>
+            <li>'what':'prob_dept' will respond with a dict of all the departments who are above 0% in probabilities</li>
+            <li>'what':'ised_sector' will respond with a dict of all the ised sectors and the %</li>
+            <li>Not providing a specifier will provide the department, the percentage, and if the department happens to be ISED, it will chain the request and also provide a dict with the sectors</li>
+        </ul>
+        For examples of this in use, please see <a href='https://colab.research.google.com/drive/1zdn512if6NgA1PCyY5gqyf-GlkUskvPK'>this Google Colab notebook</a>
+        </p>
     </div>
 </div>
+{% endblock %}

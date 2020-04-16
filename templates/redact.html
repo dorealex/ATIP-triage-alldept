@@ -1,0 +1,23 @@
+{% extends "nav.html" %}
+{% block content %}
+<div class='container'>
+    <h2>Document Redaction Demo</h2>
+    <p>Identifying the parts of the document which need to be redacted.</p>
+    3 Methods are being considered:
+    <ol>
+        <li><strong>Keywords</strong> Finding specific words</li>
+        <li><strong>Entity Recognition</strong> Setting specific rules for types of entities. For example, redact every organization name, or names of people.</li>
+        <li><strong>Context-based redaction</strong> through machine learning, analyze what a human did, and attempt to re-create it</li>
+    </ol>
+    <form method="POST">
+        <div class='form-group'>
+            {{ form.hidden_tag() }}
+            {{ form.picture.label }}
+            <br>
+            {{ form.picture(class_="form-control-file") }}
+            <br>
+            {{ form.submit(class_="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
