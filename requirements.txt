@@ -41,7 +41,3 @@ flask_bootstrap
 spacy
 pytesseract
 opencv-python
-flask-nav
-flask-debug
-flask-appconfig>=0.10
-joblib

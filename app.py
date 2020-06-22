@@ -5,8 +5,7 @@ from wtforms import StringField, SubmitField, SelectField, TextAreaField, FileFi
 from wtforms.validators import DataRequired
 import pickle
 from sklearn.svm import LinearSVC
-#from sklearn.externals import joblib
-import joblib
+from sklearn.externals import joblib
 import requests
 import json
 from flask_bootstrap import Bootstrap
