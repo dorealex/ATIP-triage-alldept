@@ -9,7 +9,9 @@
         <li><strong>Entity Recognition</strong> Setting specific rules for types of entities. For example, redact every organization name, or names of people.</li>
         <li><strong>Context-based redaction</strong> through machine learning, analyze what a human did, and attempt to re-create it</li>
     </ol>
-    <form method="POST">
+
+    More data is required to properly train the model (before and after redaction)
+    <form method="POST" hidden>
         <div class='form-group'>
             {{ form.hidden_tag() }}
             {{ form.picture.label }}
@@ -19,5 +21,28 @@
             {{ form.submit(class_="btn btn-primary") }}
         </div>
     </form>
+    <div>
+        <h3>Examples</h3>
+        The following examples are just a quick attempt at redacting automatically. The attempt was to remove entites identified as people. The results are mixed, however, the ability to target individual words definitely exists.
+        Check it out: <a href="https://colab.research.google.com/drive/1JNCF6RsK7VCF_gqVj610h8soAxz18FfA?usp=sharing">Google Colab notebook</a>.
+        <ol>
+            <li>
+                <ul>
+                    <li>Before</li>
+                    <img src="{{url_for('static',filename='example1-before.png')}}" alt="">
+                    <li>After</li>
+                    <img src="{{url_for('static',filename='example1-after.png')}}" alt="">
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>Before</li>
+                    <img src="{{url_for('static',filename='example2-before.png')}}" alt="">
+                    <li>After</li>
+                    <img src="{{url_for('static',filename='example2-after.png')}}" alt="">
+                </ul>
+            </li>
+        </ol>
+    </div>
 </div>
 {% endblock %}
