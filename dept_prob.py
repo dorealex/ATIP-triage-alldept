@@ -1,7 +1,8 @@
 from sklearn.svm import LinearSVC
-from sklearn.externals import joblib
+from sklearn.calibration import CalibratedClassifierCV
+import joblib
 import numpy as np
-model = joblib.load("full_model2.jl")
+model = joblib.load("models/model_full_june2020.jl")
 
 depts = ['aafc-aac',
  'aandc-aadnc',
@@ -10,10 +11,12 @@ depts = ['aafc-aac',
  'apfc-fapc',
  'atssc-scdata',
  'bdc',
+ 'cannor',
  'catsa-acsta',
  'cbsa-asfc',
  'cca-cac',
  'ccc',
+ 'ccohs-cchst',
  'cdev',
  'cdic-sadc',
  'ced-dec',
@@ -35,6 +38,7 @@ depts = ['aafc-aac',
  'csc-scc',
  'csec-cstc',
  'csis-scrs',
+ 'csps-efpc',
  'cstm-mstc',
  'cta-otc',
  'dcc-cdc',
@@ -91,6 +95,7 @@ depts = ['aafc-aac',
  'ppsc-sppc',
  'psc-cfp',
  'pshcp-rssfp',
+ 'psic-ispc',
  'pspib-oirpsp',
  'ps-sp',
  'pwgsc-tpsgc',
@@ -102,6 +107,7 @@ depts = ['aafc-aac',
  'swc-cfc',
  'tbs-sct',
  'tc',
+ 'tf',
  'tpa-apt',
  'tsb-bst',
  'vac-acc',
@@ -111,7 +117,6 @@ depts = ['aafc-aac',
  'wage',
  'wd-deo',
  'yesab-oeesy']
-
 
 def predict_dept_prob(text):
     pct = np.round(model.predict_proba([text])[0],2)
