@@ -2,7 +2,7 @@ from sklearn.svm import LinearSVC
 #from sklearn.externals import joblib
 import joblib
 import numpy as np
-model = joblib.load("full_model3.jl")
+model = joblib.load("full_model2.jl")
 
 depts = ['aafc-aac',
  'aandc-aadnc',

@@ -4,7 +4,6 @@ file_path = 'https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4
 df = pd.read_csv(file_path)
 df.dropna(inplace=True)
 from sklearn.svm import LinearSVC
-import joblib
 from sklearn import metrics
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -19,6 +18,4 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 text_clf = Pipeline([('tfidf',TfidfVectorizer(stop_words=stopwords)),
                     ('clf', LinearSVC())])
 text_clf.fit(X_train, y_train)
-#pickle.dump(text_clf, open('trained_model-[all].pkl','wb'))
-joblib.dump(text_clf, 'full_model3.jl')
-loaded_model = joblib.load('full_model3.jl')
+pickle.dump(text_clf, open('trained_model-[all].pkl','wb'))
