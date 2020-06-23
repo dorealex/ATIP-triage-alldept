@@ -2,7 +2,7 @@ from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
 import joblib
 import numpy as np
-model = joblib.load("models/model_full_june2020.jl")
+model = joblib.load("model_full_june2020.jl")
 
 depts = ['aafc-aac',
  'aandc-aadnc',
