@@ -1,6 +1,5 @@
 from sklearn.svm import LinearSVC
-#from sklearn.externals import joblib
-import joblib
+from sklearn.externals import joblib
 import numpy as np
 model = joblib.load("full_model2.jl")
 
