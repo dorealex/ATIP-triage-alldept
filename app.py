@@ -42,7 +42,7 @@ def triage():
     if form.validate_on_submit():
         #url='https://atip-triage-alldept.herokuapp.com/request/'
         #url='http://127.0.0.1:5000/request/'
-        ulr='https://atip-ai-demo.herokuapp.com/request/'
+        url='https://atip-ai-demo.herokuapp.com/request/'
         session['req_text'] = form.req_text.data
         session['req_type'] = form.req_type.data
         input_data={}
