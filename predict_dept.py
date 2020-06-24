@@ -1,9 +1,7 @@
 from sklearn.svm import LinearSVC
-from sklearn.calibration import CalibratedClassifierCV
-
-import joblib
+from sklearn.externals import joblib
 import numpy as np
-model = joblib.load("model_full_june2020.jl")
+model = joblib.load("full_model2.jl")
 
 def predict_dept(text):
     dept = model.predict([text])[0]

@@ -5,7 +5,7 @@ from wtforms import StringField, SubmitField, SelectField, TextAreaField, FileFi
 from wtforms.validators import DataRequired
 import pickle
 from sklearn.svm import LinearSVC
-import joblib
+from sklearn.externals import joblib
 import requests
 import json
 from flask_bootstrap import Bootstrap
@@ -40,9 +40,7 @@ def index():
 def triage():
     form = TriageForm()
     if form.validate_on_submit():
-        #url='https://atip-triage-alldept.herokuapp.com/request/'
-        #url='http://127.0.0.1:5000/request/'
-        url='https://atip-ai-demo.herokuapp.com/request/'
+        url='https://atip-triage-alldept.herokuapp.com/request/'
         session['req_text'] = form.req_text.data
         session['req_type'] = form.req_type.data
         input_data={}
