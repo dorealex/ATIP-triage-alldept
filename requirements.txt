@@ -34,7 +34,7 @@ SQLAlchemy
 SQLAlchemy-Utils
 urllib3
 URLObject
-Werkzeug==0.16.1
+Werkzeug==2.2.3
 wincertstore
 WTForms
 flask_bootstrap
